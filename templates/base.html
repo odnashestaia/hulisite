@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    {% load bootstrap5 %}
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+<div id="todo_list">
+    {% block content %}
+    {% endblock %}
+</div>
+    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+    <script>
+        document.body.addEventListener('htmx:configRequest', (event) => {
+            event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+        });
+
+        document.body.addEventListener('htmx:afterRequest', (event) => {
+            document.querySelector("input.title").value = '';
+        });
+    </script>
+</body>
+
+
+</html>

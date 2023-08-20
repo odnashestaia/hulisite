@@ -1,0 +1,8 @@
+test.py
+test_*.py
+*_test.py
+.idea
+.env
+static
+other_static
+migrations

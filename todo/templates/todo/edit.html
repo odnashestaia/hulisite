@@ -1,0 +1,9 @@
+<form action=""
+      hx-post="{% url 'edit' todo.pk %}"
+      hx-target="closest article"
+      hx-swap="outerHTML"
+      class="flex"
+>
+    <input type="text" value="{{ todo.text }}" name="title">
+    <button>Save</button>
+</form>

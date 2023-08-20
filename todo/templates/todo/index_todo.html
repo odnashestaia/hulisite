@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <form
+                class="flex mb-6 space-x-4"
+                hx-post="{% url 'add' %}"
+                hx-target="#todos"
+                hx-swap="afterend"
+        >
+            <input type="text" name="title" class="title flex-1 px-4 py-3 bg-gray-200 rounded-xl"
+                   placeholder="The title">
+
+            <button class="p-3 rounded-xl text-white bg-cyan-500 hover:bg-cyan-600">+</button>
+        </form>
+        <ul class="list-group" id="todos">
+            {% for todo in todos %}
+                {% include 'todo/list_todo.html' %}
+            {% endfor %}
+        </ul>
+
+
+    {% endif %}
+
+{% endblock %}
