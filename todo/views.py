@@ -8,7 +8,7 @@ from .models import Todo
 
 
 def todo_list(request):
-    todos = Todo.objects.filter(author=request.user)  # .filter(date_for_do=f'{datetime.date.today()}')
+    todos = Todo.objects.filter(author=request.user).order_by('-id')  # .filter(date_for_do=f'{datetime.date.today()}')
     return render(request, 'todo/index_todo.html', {'todos': todos})
 
 
@@ -38,7 +38,7 @@ def add_todo(request):
 @require_http_methods(['PUT'])
 def update_task(request, pk):
     todo = Todo.objects.get(pk=pk)
-    todo.is_complete = True
+    todo.is_complete = not todo.is_complete
     todo.save()
 
     return render(request, 'todo/list_todo.html', {'todo': todo})

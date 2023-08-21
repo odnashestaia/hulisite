@@ -3,23 +3,42 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-        <form
-                class="flex mb-6 space-x-4"
-                hx-post="{% url 'add' %}"
-                hx-target="#todos"
-                hx-swap="afterend"
-        >
-            <input type="text" name="title" class="title flex-1 px-4 py-3 bg-gray-200 rounded-xl"
-                   placeholder="The title">
 
-            <button class="p-3 rounded-xl text-white bg-cyan-500 hover:bg-cyan-600">+</button>
-        </form>
-        <ul class="list-group" id="todos">
-            {% for todo in todos %}
-                {% include 'todo/list_todo.html' %}
-            {% endfor %}
-        </ul>
+        <section class="h-100" style="background-color: #e2d5de;">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col col-xl-10">
 
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+
+                                <h6 class="mb-3">Todo List</h6>
+
+                                <form class="d-flex justify-content-center align-items-center mb-4"
+                                      hx-post="{% url 'add' %}"
+                                      hx-target="#todos"
+                                      hx-swap="afterend">
+                                    <div class="form-outline flex-fill">
+                                        <input type="text" name="title" id="form3"
+                                               class="title form-control form-control-lg"/>
+                                        <label class="form-label" for="form3">What do you need to do today?</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg ms-2">Add</button>
+                                </form>
+
+                                <ul class="list-group mb-0" id="todos">
+                                    {% for todo in todos %}
+                                        {% include 'todo/list_todo.html' %}
+                                    {% endfor %}
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
     {% endif %}
 
