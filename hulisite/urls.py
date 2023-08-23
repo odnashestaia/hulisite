@@ -22,7 +22,8 @@ from hulisite import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('todo.urls')),
+    path('todo/', include('todo.urls')),
+    path('finance/', include('finances.urls')),
     path('accounts/', include('allauth.urls')),
 ]
 

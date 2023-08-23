@@ -9,21 +9,21 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 </head>
-<body>
-<div id="todo_list">
+<body class="h-100">
+<div id="todo_list h-100" class="w-100 d-flex justified-content-center">
     {% block content %}
     {% endblock %}
 </div>
-    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
-    <script>
-        document.body.addEventListener('htmx:configRequest', (event) => {
-            event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
-        });
+<script src="https://unpkg.com/htmx.org@1.6.1"></script>
+<script>
+    document.body.addEventListener('htmx:configRequest', (event) => {
+        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    });
 
-        document.body.addEventListener('htmx:afterRequest', (event) => {
-            document.querySelector("input.title").value = '';
-        });
-    </script>
+    document.body.addEventListener('htmx:afterRequest', (event) => {
+        document.querySelector("input.title").value = '';
+    });
+</script>
 </body>
 
 

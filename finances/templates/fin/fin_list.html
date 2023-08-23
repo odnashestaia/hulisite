@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <section class="h-100 w-100" style="background-color: #287233;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Date Transaction</th>
+                            </tr>
+                            </thead>
+                            {% include 'fin/fin_form.html' %}
+                            <tbody>
+                            {% for finance in finances %}
+                                {% if finance.amount > 0 %}
+                                    <tr style="background-color: #49D97F">
+                                        {% else %}
+                                    <tr style="background-color: #CE4454">
+                                {% endif %}
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ finance.description }}</td>
+                            <td>{{ finance.amount }}</td>
+                            <td>{{ finance.transaction_date }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

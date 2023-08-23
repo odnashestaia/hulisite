@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # my app
     # 'day.apps.DayConfig',
-    # 'finances.apps.FinancesConfig',
+    'finances.apps.FinancesConfig',
     'todo.apps.TodoConfig',
 
     # загруженные библиотеки
