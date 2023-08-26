@@ -1,6 +1,10 @@
 from django.urls import path
-from .views import fin_list
+from .views import fin_list, fin_add, fin_delete, fin_edit
 
+app_name = 'fin'
 urlpatterns = [
-    path('', fin_list, name='fin_list'),
+    path('', fin_list, name='list'),
+    path('create', fin_add, name='create'),
+    path('delete/<int:pk>', fin_delete, name='delete'),
+    path('edit/<int:pk>', fin_edit, name='edit')
 ]

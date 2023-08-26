@@ -33,12 +33,12 @@
     <div class="d-flex align-items-center">
         <div class="w-4/5 py-3">
             <p class="px-6 text-xs text-gray-900" id="text{{ todo.id }}">
-                <span>{{ todo.pk }}</span> - - {{ todo.text }} - - {{ todo.date_for_do }}
+                <span>{{ forloop.counter }}</span> - - {{ todo.text }} - - {{ todo.date_for_do }}
             </p>
         </div>
     </div>
     <div class="d-flex">
-        <buttom hx-get="{% url 'edit' todo.pk %}"
+        <buttom hx-get="{% url 'todo:edit' todo.pk %}"
                 hx-target="#text{{ todo.id }}"
                 hx-swap="outerHTML"
                 style="cursor: pointer">
@@ -46,7 +46,7 @@
         </buttom>
         {% if not todo.is_complete %}
             <form
-                    hx-put="{% url 'update' todo.pk %}"
+                    hx-put="{% url 'todo:update' todo.pk %}"
                     hx-target="closest li"
                     hx-swap="outerHTML"
             >
@@ -59,7 +59,7 @@
             </form>
         {% else %}
             <form
-                    hx-put="{% url 'update' todo.pk %}"
+                    hx-put="{% url 'todo:update' todo.pk %}"
                     hx-target="closest li"
                     hx-swap="outerHTML"
             >
@@ -75,7 +75,7 @@
                 hx-confirm="Are you sure?"
                 hx-target="closest li"
                 hx-swap="outerHTML swap:1s"
-                hx-delete="{% url 'delete' todo.pk %}"
+                hx-delete="{% url 'todo:delete' todo.pk %}"
                 data-mdb-toggle="tooltip" title="Remove item"
         >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'fin/fin_form.html' %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Categoris</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Date Transaction</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            {% include 'fin/list.html' %}
+        </table>
+    </div>
+
+{% endblock %}
+

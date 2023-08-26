@@ -1,0 +1,18 @@
+<tr>
+    <form method="post" hx-post="{% url 'fin:edit' finance.pk %}"
+          hx-target="closest tr"
+          hx-swap="outerHTML">
+        <td><select class="form-select" name="categories">
+            {% for text in categories %}
+                <option value="{{ text.id }}">{{ text.text }}</option>
+            {% endfor %}
+        </select></td>
+        <td><input class="form-control" value="{{ finance.description }}" type="text" name="des"></td>
+        <td><input class="form-control" value="{{ finance.amount }}" type="number" name="amount"></td>
+        <td><input class="form-control" value="{{ finance.transaction_date|date:'o-m-d' }}" type="date" name="transaction_date"></td>
+
+        <td class="d-flex justify-content-between">
+            <button class="btn btn-primary" type="submit">Save</button>
+        </td>
+    </form>
+</tr>

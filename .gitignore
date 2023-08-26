@@ -6,3 +6,4 @@ test_*.py
 static
 other_static
 migrations
+__pycache__

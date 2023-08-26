@@ -1,5 +1,5 @@
 <form action=""
-      hx-post="{% url 'edit' todo.pk %}"
+      hx-post="{% url 'todo:edit' todo.pk %}"
       hx-target="closest li"
       hx-swap="outerHTML"
 >

@@ -4,6 +4,13 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
+class Categories(models.Model):
+    text = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.text
+
+
 class Account(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
@@ -18,8 +25,8 @@ class Transaction(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.CharField(max_length=100)
+    categories = models.ForeignKey(Categories, related_name='transaction_categories', on_delete=models.CASCADE)
     transaction_date = models.DateField(default=datetime.date.today)
 
     def __str__(self):
         return f'{self.description} - {self.amount}'
-

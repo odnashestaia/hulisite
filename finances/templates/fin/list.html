@@ -1,0 +1,9 @@
+<tbody id="transaction">
+{% for finance in finances %}
+    <tr {% if finance.amount > 0 %}style="background-color: #49D97F"
+        {% else %}style="background-color: #CE4454"{% endif %}
+        id="tran{{ finance.pk }}">
+        {% include 'fin/fin_transaction.html' %}
+    </tr>
+{% endfor %}
+</tbody>

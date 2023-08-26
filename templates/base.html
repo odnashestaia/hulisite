@@ -1,18 +1,22 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }}</title>
-    {% load bootstrap5 %}
-    {# Load CSS and JavaScript #}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'Bootstrap/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/assets/css/Navbar-With-Button-icons.css' %}">
 </head>
 <body class="h-100">
-<div id="todo_list h-100" class="w-100 d-flex justified-content-center">
-    {% block content %}
-    {% endblock %}
+{% include 'navbar.html' %}
+
+<div class="w-100 d-flex justify-content-center">
+    <div style="width: 95%;">
+        <div style="padding: 20px;text-align: center;"><h1>Transaction list</h1></div>
+        {% block content %}
+        {% endblock %}
+    </div>
 </div>
 <script src="https://unpkg.com/htmx.org@1.6.1"></script>
 <script>
@@ -21,7 +25,7 @@
     });
 
     document.body.addEventListener('htmx:afterRequest', (event) => {
-        document.querySelector("input.title").value = '';
+        document.querySelector("input").value = '';
     });
 </script>
 </body>
