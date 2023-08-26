@@ -1,8 +1,9 @@
-<form action=""
+<form  method="post"
       hx-post="{% url 'todo:edit' todo.pk %}"
       hx-target="closest li"
-      hx-swap="outerHTML"
->
+      hx-swap="outerHTML">
+
     <input type="text" value="{{ todo.text }}" name="title">
-    <button>Save</button>
+
+    <button type="submit">Save</button>
 </form>

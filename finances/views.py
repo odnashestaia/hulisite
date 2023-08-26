@@ -13,22 +13,6 @@ def fin_list(request):
     return render(request, 'fin/index.html',
                   {'finances': fin, 'categories': categories})
 
-
-@require_http_methods(['GET', 'POST'])
-def fin_edit(request, pk):
-    tran = Transaction.objects.get(pk=pk)
-    cat = Categories.objects.all()
-
-    if request.method == 'POST':
-        tran.description = request.POST.get('des')
-        tran.transaction_date = request.POST.get('transaction_date')
-        tran.categories_id = request.POST.get('categories')
-        tran.save()
-
-        return render(request, 'fin/fin_transaction.html', {'finance': tran, 'categories': cat})
-    return render(request, 'fin/fin_edit.html', {'finance': tran, 'categories': cat})
-
-
 @require_http_methods(['POST'])
 def fin_add(request):
     tran = None
