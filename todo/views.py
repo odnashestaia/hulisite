@@ -8,7 +8,7 @@ from .models import Todo
 
 
 def todo_list(request):
-    todos = Todo.objects.filter(author=request.user).order_by('-id')  # .filter(date_for_do=f'{datetime.date.today()}')
+    todos = Todo.objects.filter(author=request.user).order_by('-id').order_by('is_complete')
     return render(request, 'todo/index_todo.html', {'todos': todos})
 
 

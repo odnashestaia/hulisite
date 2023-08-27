@@ -17,7 +17,7 @@
                                 <form class="d-flex justify-content-center align-items-center mb-4"
                                       hx-post="{% url 'todo:add' %}"
                                       hx-target="#todos"
-                                      hx-swap="afterend">
+                                      hx-swap="beforebegin">
                                     <div class="form-outline flex-fill">
                                         <input type="text" name="title" id="form3"
                                                class="title form-control form-control-lg"/>

@@ -24,7 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('todo/', include('todo.urls', namespace='todo')),
     path('finance/', include('finances.urls', namespace='finance')),
-    path('accounts/', include('allauth.urls')),
 ]
 
 if not settings.DEBUG:

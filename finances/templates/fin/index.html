@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div id="balance">
+    {% include 'fin/balance.html' %}
+    </div>
     {% include 'fin/fin_form.html' %}
     <div class="table-responsive">
         <table class="table">

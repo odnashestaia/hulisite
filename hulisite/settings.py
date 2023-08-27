@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # my app
-    # 'day.apps.DayConfig',
     'finances.apps.FinancesConfig',
     'todo.apps.TodoConfig',
 
@@ -55,20 +54,20 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     # https://django-bootstrap-v5.readthedocs.io/en/latest/installation.html
-    'bootstrap5',
+    # 'bootstrap5',
 
     # https://pypi.org/project/django-ckeditor/#required
     # text editor
-    'ckeditor',
+    # 'ckeditor',
 
     # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#install-the-app
     "debug_toolbar",
 
     # https://django-crispy-forms.readthedocs.io/en/latest/install.html
     # should be in the end
-    'crispy_forms',
+    # 'crispy_forms',
     # https://pypi.org/project/crispy-bootstrap4/
-    "crispy_bootstrap4",
+    # "crispy_bootstrap4",
 
     # https://github.com/un1t/django-cleanup
     'django_cleanup.apps.CleanupConfig',
