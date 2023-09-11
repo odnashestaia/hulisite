@@ -8,7 +8,10 @@ from .models import Todo
 
 
 def todo_list(request):
-    todos = Todo.objects.filter(author=request.user).order_by('-id').order_by('is_complete')
+    if request.user.is_authenticated:
+        todos = Todo.objects.filter(author=request.user).order_by('-id').order_by('is_complete')
+    else:
+        todos = [{'text': 'Test text', 'is_complete': False, 'date_for_do': '2023.12.23'}]
     return render(request, 'todo/index_todo.html', {'todos': todos})
 
 

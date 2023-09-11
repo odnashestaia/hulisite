@@ -2,18 +2,21 @@
         class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded-0 mb-2">
     <div class="d-flex align-items-center">
         <div class="w-4/5 py-3">
-            <p class="px-6 text-xs text-gray-900" id="text{{ todo.id }}">
-                {{ todo.text }} - - {{ todo.date_for_do }}
+            <p class="px-6 text-xs text-gray-900" {% if user.is_authenticated %}id="text{{ todo.id }}" {% endif %}>
+                <h5>{{ todo.text }} ---- {{ todo.date_for_do }}</h5>
             </p>
         </div>
     </div>
+{% if user.is_authenticated %}
     <div class="d-flex">
-        <div hx-get="{% url 'todo:edit' todo.pk %}"
-                hx-target="#text{{ todo.id }}"
-                hx-swap="outerHTML"
-                style="cursor: pointer">
-            edit
-        </div>
+        {% if user.is_authenticated %}
+            <div hx-get="{% url 'todo:edit' todo.pk %}"
+                 hx-target="#text{{ todo.id }}"
+                 hx-swap="outerHTML"
+                 style="cursor: pointer">
+                edit
+            </div>
+        {% endif %}
         {% if not todo.is_complete %}
             <form
                     hx-put="{% url 'todo:update' todo.pk %}"
@@ -27,6 +30,7 @@
                 </button>
             </form>
         {% else %}
+
             <form
                     hx-put="{% url 'todo:update' todo.pk %}"
                     hx-target="closest li"
@@ -52,4 +56,6 @@
             </svg>
         </a>
     </div>
+{% endif %}
 </li>
+

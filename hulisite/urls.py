@@ -24,6 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('todo/', include('todo.urls', namespace='todo')),
     path('finance/', include('finances.urls', namespace='finance')),
+    # for authentication and registration
+    # https://django-allauth.readthedocs.io/en/latest/
+    path('accounts/', include('allauth.urls')),
 ]
 
 if not settings.DEBUG:

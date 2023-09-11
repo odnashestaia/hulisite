@@ -2,18 +2,18 @@
 
 {% block content %}
 
-    {% if user.is_authenticated %}
 
-        <section class="h-100" style="background-color: #e2d5de;">
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col col-xl-10">
 
-                        <div class="card" style="border-radius: 15px;">
-                            <div class="card-body p-5">
+    <section class="h-100" style="background-color: #e2d5de;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
 
-                                <h6 class="mb-3">Todo List</h6>
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
 
+                            <h6 class="mb-3">Todo List</h6>
+                            {% if user.is_authenticated %}
                                 <form class="d-flex justify-content-center align-items-center mb-4"
                                       hx-post="{% url 'todo:add' %}"
                                       hx-target="#todos"
@@ -25,21 +25,21 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-lg ms-2">Add</button>
                                 </form>
+                            {% endif %}
+                            <ul class="list-group mb-0" id="todos">
+                                {% for todo in todos %}
+                                    {% include 'todo/list_todo.html' %}
+                                {% endfor %}
+                            </ul>
 
-                                <ul class="list-group mb-0" id="todos">
-                                    {% for todo in todos %}
-                                        {% include 'todo/list_todo.html' %}
-                                    {% endfor %}
-                                </ul>
-
-                            </div>
                         </div>
-
                     </div>
+
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    {% endif %}
+
 
 {% endblock %}

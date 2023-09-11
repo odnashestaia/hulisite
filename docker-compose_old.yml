@@ -1,0 +1,58 @@
+version: '3.10'
+
+services:
+  web:
+    build: ./
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code/
+    expose:
+      - 8000
+    env_file:
+      - ./.env.prod
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - pg_data:/code/postgrest
+    environment:
+      - 'POSTGRES_PASSWORD=Prop123'
+      - 'POSTGREST_USER=postgres'
+      - 'POSTGREST_DB=postgres'
+volumes:
+  pg_data:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#services:
+#  django:
+#    container_name: hulisite
+#    build: .
+#    command: bash -c "python3 /code/manage.py migrate && python3 /code/manage.py runserver 0.0.0.0:8000"
+#    ports:
+#      - '8000:8000'
+#    volumes:
+#      - .:/code
+#    depends_on:
+#      - db
+#    -
+#  db:
+#    image: postgres:12
+#    volumes:
+#      - pg_data:/app/postgrest
+#    environment:
+#      - 'POSTGRES_PASSWORD=Prop123'
+#      - 'POSTGREST_USER=postgrest'
+#      - 'POSTGREST_DB=postgrest'
+#volumes:
+#  pg_data:
